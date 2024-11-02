@@ -40,7 +40,7 @@ function Login() {
         <div className="login-container">
             <div className="logo">
                 <img
-                    src="https://1000logos.net/wp-content/uploads/2016/11/Facebook-Logo.png"
+                    src="https://logos-world.net/wp-content/uploads/2020/05/Facebook-Logo.png"
                     alt="Google Logo"
                 />
             </div>
