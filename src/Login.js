@@ -21,7 +21,7 @@ function Login() {
             console.log(response)
 
             if (response.ok) {
-                alert('you are fucked up')
+                alert('compte verifie')
                 const data = await response.json();
                 console.log('Login successful:', data);
                 // Handle success (e.g., redirect, show success message, etc.)
